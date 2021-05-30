@@ -1,35 +1,37 @@
-# spacemy.xyz-rebooted
-A fork/faithful recreation of typicalname0/spacemy.xyz
+# spacemy.xyz-rebooted (ACXYZ's Fork)
+A fork of a fork/faithful recreation of typicalname0/spacemy.xyz
 
-## dependencies
-requires composer... u shoudl know how to use composer
+## Notes
+Please be advised that this is the NOT official spacemy.xyz-rebooted repository.
+If you're looking for the original, go [here](https://github.com/the-real-sumsome/spacemy.xyz-rebooted).
 
-uses steam auth thing..,, >https://github.com/SmItH197/SteamAuthentication
+## Dependencies
+- Requires composer, you should be familiar to use it.
+- [SteamAuthentication](https://github.com/SmItH197/SteamAuthentication).
+- PHP >= 7.3, you can use a lower php version but it's unproven if it will work.
+- mysqli/mysql server
 
-uses php 7.3.... u can use a lower php verison but idk if it will work
-
-uses mysqli/mysql server,...;
-
-## how 2 setup
+## How to Setup
+### 
 ```
-git clone https://github.com/the-real-sumsome/spacemy.xyz-rebooted.git
+git clone https://github.com/notACXYZ/spacemy.xyz-rebooted-1.git
 mv /your/git/directory /your/webserver/dir/
 cd /your/webserver/dir/
 php composer.phar install
 
 sudo nano static/config.inc.php
-get a steam api key from http://steamcommunity.com/dev/apikey
-get a recaptcha priv/pub key from https://www.google.com/recaptcha/admin
+```
+Get a Steam API key from http://steamcommunity.com/dev/apikey
 
+Get a recaptcha priv/pub key from https://www.google.com/recaptcha/admin
+
+```
 import the sql file into phpmyadmin/whatever
-
 sudo service apache2 start
-
-u are done
 ```
 
-## notes
-this is a project just for experimenting with php. u can contribute if there are some security issues.
+## Credits
+### Original Contribs
+- [Original](https://github.com/the-real-sumsome/spacemy.xyz-rebooted).
 
-## thanks to
-everyone who has helped me web dev
+You're done.
