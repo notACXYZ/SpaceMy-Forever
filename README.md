@@ -15,8 +15,8 @@ If you're looking for the original, go [here](https://github.com/the-real-sumsom
 ### 
 ```
 git clone https://github.com/notACXYZ/spacemy.xyz-rebooted-1.git
-mv /your/git/directory /your/webserver/dir/
-cd /your/webserver/dir/
+mv (your git dir) (your webserver dir)
+cd (your webserver dir)
 php composer.phar install
 
 sudo nano static/config.inc.php
