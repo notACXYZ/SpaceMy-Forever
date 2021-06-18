@@ -17,8 +17,8 @@ body {
 }
 
 .headerTop {
-    background-color: #8B0000;
-    background-image:url(https://www.spacemy.xyz/dynamic/files/9d2a9fac4c81b7b50cb7b3f3b2817dcb.png);
+    background-color: #004099;
+    background-image:url(/static/css/gradient2.png);
     background-repeat:repeat-x;
     background-position:bottom;
     color: white;
@@ -53,8 +53,8 @@ body {
     padding-left: 3px;
     padding-top: 3px;
     padding-bottom: 3px;
-    background-color: #B45A5A;
-    background-image:url(https://www.spacemy.xyz/dynamic/files/a11634fea23ca7c05bae192510fbb003.png);
+    background-color: #6699cc;
+    background-image:url(/static/css/gradient1.png);
     background-repeat:repeat-x;
     color: white;
 }
@@ -207,7 +207,7 @@ table {
 }
 
 #padding10 {
-    padding: 10px;
+    margin: 0;
 }
 
 .contacting {
@@ -260,6 +260,12 @@ table {
 .splashBlue {
     background-color: rgb(213,231,251);
     border: 1px solid#abbacb;
+    padding: 3px;
+}
+
+.splashRed {
+    background-color: rgb(251,213,213);
+    border: 1px solid#cbabab;
     padding: 3px;
 }
 
