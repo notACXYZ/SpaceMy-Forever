@@ -88,7 +88,7 @@
                                 while($row = $result->fetch_assoc()) { 
                                     $lastLoginReal = (int)strtotime($row['lastlogin']);
                                     $NetTimeOnline = time() - $lastLoginReal;
-                                    echo $lastLoginReal."-lastlogin<br>". time() . "-time<br>". $NetTimeOnline ."-net<br>";
+                                    //echo $lastLoginReal."-lastlogin<br>". time() . "-time<br>". $NetTimeOnline ."-net<br>";
                                     //if(time() - $lastLoginReal < 15 * 60)
                                     // 4.8 hours
                                     if($NetTimeOnline < 17280) { ?>
