@@ -7,8 +7,8 @@
     $config['db_name'] = "spacemy2";
     $config['db_host'] = "127.0.0.1";
 
-    $config['recaptcha_secret'] = "";
     $config['recaptcha_sitekey'] = "";
+    $config['recaptcha_secret'] = "";
 
     $config['steam_web_id'] = "";
 
