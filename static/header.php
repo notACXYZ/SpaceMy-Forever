@@ -25,7 +25,7 @@ if(isset($_SESSION['siteusername'])) {
 }
 ?>
 <div class="headerTop">
-    <a href="/index.php"><img src="/static/spacemyt.png"></a>
+    <a href="/index.php"><img src="/static/spacemy2.png"></a>
     <small id="floatRight">
         <?php if(isset($_SESSION['siteusername'])) {?>
         <a href="/logout.php">Logout</a>
@@ -35,7 +35,7 @@ if(isset($_SESSION['siteusername'])) {
         <?php }?>&nbsp;&nbsp;
     </small><br>
     <span id="floatRight">
-        <form method="get" action="/browse.php">
+        <form method="get" action="/browse.php" style="margin:0">
         <select name="searchmethod">
             <option value="users">User</option>
             <option value="blog">Blog</option>
@@ -68,10 +68,12 @@ if(isset($_SESSION['siteusername'])) {
         <a href="/friends/">Friends<?php echo ($unread_friend_count === 0 ? "" : " (" . $unread_friend_count . ")" )?></a> &bull;
         <?php }?>
         <a href="/jukebox.php">Jukebox</a> &bull;
+        <?php // if (isset($_SESSION['siteusername'])) {? ><a href="/videos/">Videos</a>  &bull;< ?php } ?>
         <a href="/users.php">All Users</a>
         <?php if (isset($_SESSION['siteusername'])) {?>
         <span id="floatRight">
             <span id="custompadding">
+                <?php if(isAdmin($_SESSION['siteusername'], $conn) == true) { echo '<a href="/admin">Admin</a> &bull;'; } ?>
                 <a href="/files">Files</a> &bull;
                 <a href="/edit">Edit Items</a> &bull;
                 <a href="/manage.php">Manage User</a> &bull;
