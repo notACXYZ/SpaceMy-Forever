@@ -72,8 +72,8 @@
             <div class="customtopLeft">
                 <div class="padding">
                     <div class="hero">
-                        <h1 id="noMargin">spacemy.xyz</h1>
-                        An opensourced passion project to replicate/mimmic the feel and customizability of 2008 MySpace. This is currently heavily under development, so expect some bugs or security bugs once in a while.<br><?php if(!isset($_SESSION['siteusername'])): ?><br><a href="register.php"><button>Join</button></a><?php endif ?>
+                        <h1 id="noMargin">SpaceMy Forever</h1>
+                        An opensourced passion project to replicate/mimmic the feel and customizability of 2008 MySpace. It was forked from the former spacemy.xyz. This is currently heavily under development, so expect some bugs or security bugs once in a while.<br><?php if(!isset($_SESSION['siteusername'])): ?><br><a href="register.php"><button>Join</button></a><?php endif ?>
                     </div><br>
                     <div class="login">
                         <div class="loginTopbar">
@@ -87,17 +87,21 @@
 
                                 while($row = $result->fetch_assoc()) { 
                                     $lastLoginReal = (int)strtotime($row['lastlogin']);
-                                    if(time() - $lastLoginReal < 15 * 60) { ?>
+                                    $NetTimeOnline = time() - $lastLoginReal;
+                                    echo $lastLoginReal."-lastlogin<br>". time() . "-time<br>". $NetTimeOnline ."-net<br>";
+                                    //if(time() - $lastLoginReal < 15 * 60)
+                                    // 4.8 hours
+                                    if($NetTimeOnline < 17280) { ?>
                                     <div class="item1"><a href="profile.php?id=<?php echo getIDFromUser($row['username'], $conn); ?>"><div><center><?php echo $row['username']; ?></center></div><img src="/dynamic/pfp/<?php echo getPFPFromUser($row['username'], $conn); ?>"></a></div>
                                     <?php }    
                                 } ?>
                         </div>
                     </div><br>
                     <div class="splashBlue">
-                        Always make sure you're visiting the real spacemy.xyz!
+                        Always make sure you're visiting the real SpaceMy!
                         <ul>
                             <li>Check the URL in your browser.</li>
-                            <li>Make sure it begins with http://www.spacemy.xyz/</li>
+                            <li>Make sure it begins with https://spacemy.xyz/</li>
                             <li>If ANY OTHER PAGE asks for your info, DON'T LOG IN!</li>
                         </ul>
                     </div>
@@ -275,38 +279,52 @@
                             <div class="item1"><a href="profile.php?id=<?php echo getIDFromUser($row['username'], $conn); ?>"><div><center><?php echo $row['username']; ?></center></div><img src="/dynamic/pfp/<?php echo getPFPFromUser($row['username'], $conn); ?>"></a></div>
                         <?php } ?>
                     </div>
-                </div><br>
+                </div>
+                <br>
+                
+                
+         <div class="login">
+               <div class="loginTopbar">
+                  <b>Changelogs</b><span style="float: right; color: white;"></span>
+               </div>
+               <?php /* Remove this if you want a changelog or something lol
+               <div class="grid-container">
+                  <?php include 'static/changelog.php';  ?>
+               </div> */ ?>
+	       
             </div>
-            <!--
-            <div class="padding10">
-                <table class="cols" style="margin-top: 800px;">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <b>Get Started!</b><br>
-                                Join for free, and view profiles, connect with others, blog, customize your profile, and much more!<br><br><br><br>
-                                <span id="splash">» <a href="register.php">Learn More</a></span>
-                            </td>
-                            <td>
-                                <b>Create Your Profile!</b><br>
-                                Tell us about yourself, upload your pictures, and start adding friends to your network.<br><br><br><br><br>
-                                <span id="splash">» <a href="register.php">Start Now</a></span>
-                            </td>
-                            <td>
-                                <b>Browse Profiles!</b><br>
-                                Read through all of the profiles on SpaceMy! See pix, read blogs, and more!<br><br><br><br><br>
-                                <span id="splash">» <a href="users.php">Browse Now</a></span>
-                            </td>
-                            <td>
-                                <b>Invite Your Friends!</b><br>
-                                Invite your friends, and as they invite their friends your network will grow even larger!<br><br><br><br><br>
-                                <span id="splash">» <a href="register.php">Invite Friends Now</a></span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            -->
+            <br>
+         </div>
+            
+		<!-- Promotional -->
+         <div class="padding10">
+            <table class="cols" style="float: left;">
+               <tbody>
+                  <tr>
+                     <td>
+                        <b>Get Started!</b><br>
+                        Join for free, and view profiles, connect with others, blog, customize your profile, and much more!<br><br><br><br>
+                        <span id="splash">» <a href="register.php">Learn More</a></span>
+                     </td>
+                     <td>
+                        <b>Create Your Profile!</b><br>
+                        Tell us about yourself, upload your pictures, and start adding friends to your network.<br><br><br><br><br>
+                        <span id="splash">» <a href="register.php">Start Now</a></span>
+                     </td>
+                     <td>
+                        <b>Browse Profiles!</b><br>
+                        Read through all of the profiles on SpaceMy! See pix, read blogs, and more!<br><br><br><br><br>
+                        <span id="splash">» <a href="users.php">Browse Now</a></span>
+                     </td>
+                     <td>
+                        <b>Invite Your Friends!</b><br>
+                        Invite your friends, and as they invite their friends your network will grow even larger!<br><br><br><br><br>
+                        <span id="splash">» <a href="register.php">Invite Friends Now</a></span>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
         </div>
         <br>
         <?php require($_SERVER['DOCUMENT_ROOT'] . "/static/footer.php"); ?>
