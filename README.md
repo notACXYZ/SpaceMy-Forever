@@ -6,9 +6,9 @@ Please be advised that this is the NOT official spacemy.xyz-rebooted repository.
 If you're looking for the original, go [here](https://github.com/the-real-sumsome/spacemy.xyz-rebooted).
 
 ## Dependencies
-- Requires composer, you should be familiar to use it.
+- Requires composer
 - [SteamAuthentication](https://github.com/SmItH197/SteamAuthentication).
-- PHP >= 7.3, you can use a lower php version but it's unproven if it will work.
+- PHP >= 7.3, you could use a lower php version but I don't know if it'll work.
 - mysqli/mysql server
 
 ## How to Setup
