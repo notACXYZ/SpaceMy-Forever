@@ -5,5 +5,7 @@ function validateCaptcha($privatekey, $response) {
 	return $responseData->success;
 }
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+}
 ?>
