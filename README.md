@@ -3,12 +3,18 @@ A fork of a fork/faithful recreation of typicalname0/spacemy.xyz
 
 ## Notes
 Please be advised that this is the NOT official spacemy.xyz-rebooted repository.
+
 If you're looking for the original, go [here](https://github.com/the-real-sumsome/spacemy.xyz-rebooted).
+## Issues
+- File management is barely functional.
+- Forums doesnt work
+- Admin panel is limited
+
 
 ## Dependencies
 - Requires composer
 - [SteamAuthentication](https://github.com/SmItH197/SteamAuthentication).
-- PHP >= 7.3, you could use a lower php version but I don't know if it'll work.
+- PHP >= 7.3.0, you could use a lower php version but I don't know if it'll work.
 - mysqli/mysql server
 
 ## How to Setup
