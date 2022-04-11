@@ -26,10 +26,10 @@
                         if(!validateCaptcha($config['recaptcha_secret'], $_POST['g-recaptcha-response'])) { $error = "captcha validation failed"; goto skip; }
 
                         $to = htmlspecialchars($_POST['email']);
-                        $subject = "SpaceMy.xyz Password Reset";
-                        $txt = "SpaceMy.Xyz Forgot Password\nUser: ?\n<a href='https://www.spacemy.xyz/resetpassword.php'><button>Reset</button></a>";
+                        $subject = "SpaceMy Forever - Password Reset";
+                        $txt = "SpaceMy Forever - Forgot Password\nUser: ?\n<a href='https://spacemy.acxyz.ca/resetpassword.php'><button>Reset</button></a>";
                         $txt = wordwrap($txt, 70);
-                        $headers = "From: password@spacemy.xyz";
+                        $headers = "From: noreply@spacemy.acxyz.ca";
 
                         mail($to, $subject, $txt, $headers);
                     }
