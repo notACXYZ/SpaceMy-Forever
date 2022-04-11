@@ -197,7 +197,7 @@
             </center>
             <div class="url">
                 <b>SpaceMy URL:</b><br>
-                &nbsp;&nbsp;https://spacemy.xyz/profile.php?id=<?php echo $user['id']; ?>
+                &nbsp;&nbsp;https://spacemy.acxyz.ca/profile.php?id=<?php echo $user['id']; ?>
             </div>
         </div>
         <div class="topRight">
