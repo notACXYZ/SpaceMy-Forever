@@ -126,8 +126,8 @@
                             <a href=
                                "">
                             <li><a href="javascript:LoginAlert(Resources.login_alert);" class="bulletin_this">Bulletin This</a></li>
-                            <li><a href="https://www.spacemy.xyz/blogs/new.php?text=check out this blog! https://www.spacemy.xyz/blogs/view.php?id=<?php echo $blog['id']; ?>" class="blog_this">Blog This</a></li>
-                            <li><a href="mailto:example@example.com?body=Check out this blog: https://www.spacemy.xyz/blogs/view.php?id=<?php echo $blog['id']; ?>" class="email_this">Email This</a></li>
+                            <li><a href="https://spacemy.acxyz.ca/blogs/new.php?text=check out this blog! https://www.spacemy.acxyz.ca/blogs/view.php?id=<?php echo $blog['id']; ?>" class="blog_this">Blog This</a></li>
+                            <li><a href="mailto:example@example.com?body=Check out this blog: https://www.spacemy.acxyz.ca/blogs/view.php?id=<?php echo $blog['id']; ?>" class="email_this">Email This</a></li>
                             <li id="profile"><a href="javascript:LoginAlert(Resources.login_alert);" class="add_to_profile">Add to Profile</a></li>
                             <li id="favorite"><a href="javascript:LoginAlert(Resources.login_alert);" class="favorite_this">Save to favorites</a></li>
                             <li id="inappropriate"></li>
