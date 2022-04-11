@@ -108,7 +108,7 @@
                     <br>
                     <div class="login">
                         <div class="loginTopbar">
-                            <b>SpaceMy Member Blogs</b><span style="float: right; color: white;"><small><a style="color: white;" href="/blogs/">[view more]</a></small></span>
+                            <b>SpaceMy Member Blogs</b><span style="float: right; color: white;"><small><a style="color: white;" href="/blogs/">[view more]</a> [ordered by bump]</small></span>
                         </div>
                         <ul>
                         <?php
