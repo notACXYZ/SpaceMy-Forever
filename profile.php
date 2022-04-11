@@ -18,7 +18,7 @@
         <?php $user = getUserFromId((int)$_GET['id'], $conn); ?>
         <meta property="og:title" content="<?php echo $user['username']; ?>" />
         <meta property="og:description" content="<?php echo preg_replace("/\"/", "&quot;", $user['bio']); ?>" />
-        <meta property="og:image" content="https://www.spacemy.xyz/dynamic/pfp/<?php echo $user['pfp']; ?>" />
+        <meta property="og:image" content="https://spacemy.acxyz.ca/dynamic/pfp/<?php echo $user['pfp']; ?>" />
     </head>
     <body>
         <div class="container">
@@ -203,7 +203,7 @@
                     </center>
                     <div class="url">
                     <b>SpaceMy URL:</b><br>
-                    &nbsp;&nbsp;https://spacemy.xyz/profile.php?id=<?php echo $user['id']; ?>
+                    &nbsp;&nbsp;https://spacemy.acxyz.ca/profile.php?id=<?php echo $user['id']; ?>
                     </div>
                 </div>
                 <div class="topRight">
