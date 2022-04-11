@@ -34,7 +34,7 @@
         <?php $user = getUserFromName($group['owner'], $conn); ?>
         <meta property="og:title" content="<?php echo $group['name']; ?>" />
         <meta property="og:description" content="<?php echo preg_replace("/\"/", "&quot;", $group['description']); ?>" />
-        <meta property="og:image" content="https://spacemy.xyz/dynamic/groups/<?php echo $group['pic']; ?>" />
+        <meta property="og:image" content="https://spacemy.acxyz.ca/dynamic/groups/<?php echo $group['pic']; ?>" />
         <style>
             .customtopLeft {
                 float: left;
