@@ -1,4 +1,4 @@
-# spacemy.xyz-rebooted (ACXYZ's Fork)
+# SpaceMy Forever (spacemy.xyz-rebooted Fork)
 A fork of a fork/faithful recreation of typicalname0/spacemy.xyz
 
 ## Notes
