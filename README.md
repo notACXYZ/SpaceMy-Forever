@@ -10,12 +10,11 @@ If you're looking for the original, go [here](https://github.com/the-real-sumsom
 - Forums doesnt work
 - Admin panel is limited
 
-
 ## Dependencies
-- Requires composer
-- [SteamAuthentication](https://github.com/SmItH197/SteamAuthentication).
-- PHP >= 7.3.0, you could use a lower php version but I don't know if it'll work.
-- mysqli/mysql server
+- Composer
+- [SteamAuthentication](https://github.com/SmItH197/SteamAuthentication)
+- PHP >=7.3
+- MySQL
 
 ## How to Setup
 ### 
@@ -32,7 +31,7 @@ Get a Steam API key from http://steamcommunity.com/dev/apikey
 Get a recaptcha priv/pub key from https://www.google.com/recaptcha/admin
 
 ```
-import the sql file into phpmyadmin/whatever
+import the sql file into into your database
 sudo service apache2 start
 ```
 
