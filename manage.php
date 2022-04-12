@@ -13,109 +13,138 @@
         <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
         <link rel="stylesheet" href="codemirror/codemirror.css">
         <script src="codemirror/codemirror.js"></script>
-        <?php 
-            if(!isset($_SESSION['siteusername'])) { redirectToLogin(); }
-            $user = getUserFromName($_SESSION['siteusername'], $conn); 
-            //updateUserBio();
-            
-            if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['bioset']) {
-                updateUserBio($_SESSION['siteusername'], $_POST['bio'], $conn);
-                header("Location: manage.php");
-            } else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['cssset']) {
-                updateUserCSS($_SESSION['siteusername'], $_POST['css'], $conn);
-                header("Location: manage.php");
-            } else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['genderset']) {
-                updateUserGender($_SESSION['siteusername'], $_POST['gender'], $conn);
-                header("Location: manage.php");
-            } else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['songtitleset']) {
-                updateUserSong($_SESSION['siteusername'], $_POST['songtitle'], $conn);
-                header("Location: manage.php");
-            } else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['ageset']) {
-                updateUserAge($_SESSION['siteusername'], $_POST['age'], $conn);
-                header("Location: manage.php");
-            } else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['locationset']) {
-                updateUserLocation($_SESSION['siteusername'], $_POST['location'], $conn);
-                header("Location: manage.php");
-            } else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['interestsmusicset']) {
-                updateUserInterestMusic($_SESSION['siteusername'], $_POST['interestsmusic'], $conn);
-                header("Location: manage.php");
-            } else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['interestsset']) {
-                updateUserInterest($_SESSION['siteusername'], $_POST['interests'], $conn);
-                header("Location: manage.php");
-            } else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['privacyset']) {
-                $buffer = $_POST['blogsprivacy'] . "|" . $_POST['friendsprivacy'] . "|" . $_POST['commentssprivacy'];
-                $stmt = $conn->prepare("UPDATE users SET privacy = ? WHERE username = ?");
-                $stmt->bind_param("ss", $buffer, $_SESSION['siteusername']);
-                $stmt->execute();
-                $stmt->close();
-                header("Location: manage.php"); 
-            } else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['pfpset']) {
-                //This is terribly awful and i will probably put this in a function soon
-                $target_dir = "dynamic/pfp/";
-                $imageFileType = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
-                $target_name = md5_file($_FILES["fileToUpload"]["tmp_name"]) . "." . $imageFileType;
+	<?php 
+		if(!isset($_SESSION['siteusername'])) { redirectToLogin(); }
+		$user = getUserFromName($_SESSION['siteusername'], $conn); 
+		//updateUserBio();
+		
+		if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['bioset']) {
+			updateUserBio($_SESSION['siteusername'], $_POST['bio'], $conn);
+			header("Location: manage.php");
+		} else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['cssset']) {
+			updateUserCSS($_SESSION['siteusername'], $_POST['css'], $conn);
+			header("Location: manage.php");
+		} else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['genderset']) {
+			updateUserGender($_SESSION['siteusername'], $_POST['gender'], $conn);
+			header("Location: manage.php");
+		} else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['songtitleset']) {
+			updateUserSong($_SESSION['siteusername'], $_POST['songtitle'], $conn);
+			header("Location: manage.php");
+		} else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['ageset']) {
+			updateUserAge($_SESSION['siteusername'], $_POST['age'], $conn);
+			header("Location: manage.php");
+		} else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['locationset']) {
+			updateUserLocation($_SESSION['siteusername'], $_POST['location'], $conn);
+			header("Location: manage.php");
+		} else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['interestsmusicset']) {
+			updateUserInterestMusic($_SESSION['siteusername'], $_POST['interestsmusic'], $conn);
+			header("Location: manage.php");
+		} else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['interestsset']) {
+			updateUserInterest($_SESSION['siteusername'], $_POST['interests'], $conn);
+			header("Location: manage.php");
+		} else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['privacyset']) {
+			$buffer = $_POST['blogsprivacy'] . "|" . $_POST['friendsprivacy'] . "|" . $_POST['commentssprivacy'];
+			$stmt = $conn->prepare("UPDATE users SET privacy = ? WHERE username = ?");
+			$stmt->bind_param("ss", $buffer, $_SESSION['siteusername']);
+			$stmt->execute();
+			$stmt->close();
+			header("Location: manage.php"); 
+		} else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['pfpset']) {
+			//This is terribly awful and i will probably put this in a function soon
+			
+			//Uploaded pfp
+			$target_dir = "dynamic/pfp/";
+			$imageFileType = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
+			$target_name = md5_file($_FILES["fileToUpload"]["tmp_name"]) . "." . $imageFileType;
+			$target_file = $target_dir . $target_name;
+			
+			//Previous pfp
+			$stmt = $conn->prepare("SELECT `pfp` FROM users WHERE `users`.`username` = ?;");
+			$stmt->bind_param("s", $_SESSION['siteusername']);
+			$stmt->execute(); 
+			$result = $stmt->get_result();
+			$stmt->close();
+			
+			while($row = $result->fetch_assoc()) { 
+				$previous_pfp = $row['pfp'];
+			} 
+			
+			$uploadOk = true;
+			$movedFile = false;
 
-                $target_file = $target_dir . $target_name;
-                
-                $uploadOk = true;
-                $movedFile = false;
+			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+			&& $imageFileType != "gif" ) {
+				$fileerror = 'Unsupported file type. must be jpg, png, or gif';
+				$uploadOk = false;
+			}
 
-                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                && $imageFileType != "gif" ) {
-                    $fileerror = 'unsupported file type. must be jpg, png, jpeg, or gif';
-                    $uploadOk = false;
-                }
+			if (file_exists($target_file) && $uploadOk == true) {
+				$movedFile = true;
+			} elseif ($uploadOk == true){
+				$movedFile = move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
+				if ($uploadOk == true && $previous_pfp != "default.png") {
+					unlink($target_dir.$previous_pfp);
+				}
+			}
 
-                if (file_exists($target_file)) {
-                    $movedFile = true;
-                } else {
-                    $movedFile = move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
-                }
+			if ($uploadOk && $uploadOk == true) {
+				if ($movedFile) {
+					$stmt = $conn->prepare("UPDATE users SET pfp = ? WHERE `users`.`username` = ?;");
+					$stmt->bind_param("ss", $target_name, $_SESSION['siteusername']);
+					$stmt->execute(); 
+					$stmt->close();
+					header("Location: manage.php");
+				} else {
+					$fileerror = 'F';
+				}
+			}
+		} else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['songset']) {
+			$uploadOk = true;
+			$movedFile = false;
 
-                if ($uploadOk) {
-                    if ($movedFile) {
-                        $stmt = $conn->prepare("UPDATE users SET pfp = ? WHERE `users`.`username` = ?;");
-                        $stmt->bind_param("ss", $target_name, $_SESSION['siteusername']);
-                        $stmt->execute(); 
-                        $stmt->close();
-                        header("Location: manage.php");
-                    } else {
-                        $fileerror = 'fatal error';
-                    }
-                }
-            } else if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['songset']) {
-                $uploadOk = true;
-                $movedFile = false;
+			//Uploaded file
+			$target_dir = "dynamic/music/";
+			$songFileType = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
+			$target_name = md5_file($_FILES["fileToUpload"]["tmp_name"]) . "." . $songFileType;
+			$target_file = $target_dir . $target_name;
+			
+			//Previous file
+			$stmt = $conn->prepare("SELECT `music` FROM users WHERE `users`.`username` = ?;");
+			$stmt->bind_param("s", $_SESSION['siteusername']);
+			$stmt->execute(); 
+			$result = $stmt->get_result();
+			$stmt->close();
+			
+			while($row = $result->fetch_assoc()) { 
+				$previous_pfp = $row['music'];
+			} 
 
-                $target_dir = "dynamic/music/";
-                $songFileType = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
-                $target_name = md5_file($_FILES["fileToUpload"]["tmp_name"]) . "." . $songFileType;
+			if($songFileType != "ogg" && $songFileType != "mp3") {
+				$fileerror = 'unsupported file type. must be mp3 or ogg<hr>';
+				$uploadOk = false;
+			}
 
-                $target_file = $target_dir . $target_name;
+			if (file_exists($target_file) && $uploadOk == true) {
+				$movedFile = true;
+			} elseif ($uploadOk == true){
+				$movedFile = move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
+				if ($uploadOk == true && $previous_song != "default.mp3") {
+					unlink($target_dir.$previous_song);
+				}
+			}
 
-                if($songFileType != "ogg" && $songFileType != "mp3") {
-                    $fileerror = 'unsupported file type. must be mp3 or ogg<hr>';
-                    $uploadOk = false;
-                }
-
-                if (file_exists($target_file)) {
-                    $movedFile = true;
-                } else {
-                    $movedFile = move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
-                }
-
-                if ($uploadOk) {
-                    if ($movedFile) {
-                        $stmt = $conn->prepare("UPDATE users SET music = ? WHERE `users`.`username` = ?;");
-                        $stmt->bind_param("ss", $target_name, $_SESSION['siteusername']);
-                        $stmt->execute(); 
-                        $stmt->close();
-                        header("Location: manage.php");
-                    } else {
-                        $fileerror = 'fatal error' . $_FILES["fileToUpload"]["error"] . '<hr>';
-                    }
-                }
-            }
+			if ($uploadOk && $uploadOk == true) {
+				if ($movedFile) {
+					$stmt = $conn->prepare("UPDATE users SET music = ? WHERE `users`.`username` = ?;");
+					$stmt->bind_param("ss", $target_name, $_SESSION['siteusername']);
+					$stmt->execute(); 
+					$stmt->close();
+					header("Location: manage.php");
+				} else {
+					$fileerror = 'fatal error' . $_FILES["fileToUpload"]["error"] . '<hr>';
+				}
+			}
+		}
         ?>
         <style>
             .customtopLeft {
@@ -256,7 +285,7 @@
         <!-- CSS Editor -->
         <script>
             // Constants (should be defined by PHP)
-            let webroot = "https://www.spacemy.xyz"; //"https://spacemy.xyz";
+            let webroot = "https://spacemy.acxyz.ca"; //"https://spacemy.acxyz.ca";
             let profile_id = <?php echo getIDFromUser($_SESSION['siteusername'], $conn) ?>;
 
             // Global vars
