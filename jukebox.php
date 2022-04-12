@@ -25,7 +25,7 @@
                     ini_set('display_startup_errors', 1);
                     error_reporting(E_ALL);
                     if(isset($_GET['random'])) {
-                        $stmt = $conn->prepare("SELECT `music` FROM users ORDER BY RAND() LIMIT 1");
+                        $stmt = $conn->prepare("SELECT `music` FROM users WHERE `music` != 'default.mp3' ORDER BY RAND() LIMIT 1");
                         $stmt->execute();
                         $result = $stmt->get_result();
                     } else if(!isset($_GET['random'])) {
@@ -35,7 +35,7 @@
                             $stmt->execute();
                             $result = $stmt->get_result();
                         } else {
-                            $stmt = $conn->prepare("SELECT `music` FROM users ORDER BY RAND() LIMIT 1");
+                            $stmt = $conn->prepare("SELECT `music` FROM users WHERE `music` != 'default.mp3' ORDER BY RAND() LIMIT 1");
                             $stmt->execute();
                             $result = $stmt->get_result();
                         }
