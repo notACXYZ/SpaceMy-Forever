@@ -57,7 +57,10 @@
                 $group = getGroupFromId($user['currentgroup'], $conn);
 
                 $lastLoginReal = (int)strtotime($user['lastlogin']);
-                if(time() - $lastLoginReal < 15 * 60) {
+                $NetTimeOnline = time() - $lastLoginReal;
+                //if(time() - $lastLoginReal < 15 * 60) {
+                //I have no clue why this works better w/ 15min btw
+                if($NetTimeOnline < 17280) {
                     $lastLogin = true;
                 }
             ?>
