@@ -300,8 +300,8 @@ function convertYoutube($string) {
 
 
 function parseEmoticons($input) {
-    $find = array(":troll:", ":nes:", ":cookie:", ":cookiemonster:", ":dance:", ":mac:", ":jon:");
-    $replace = array(" <img src='/static/troll.png'> ", " <img src='/static/nes.gif'> ", " <img src='/static/cookie.gif'> ", " <img src='/static/CookieMonster.gif'> ", " <img src='/static/dance.gif'> ", " <img src='/static/macemoji.png'> ", " <img src='/static/jonnose.png'> ");
+    $find = array(":troll:", ":nes:", ":cookie:", ":cookiemonster:", ":dance:", ":mac:", ":jon:", ":chiyo:");
+    $replace = array(" <img src='/static/troll.png'> ", " <img src='/static/nes.gif'> ", " <img src='/static/cookie.gif'> ", " <img src='/static/CookieMonster.gif'> ", " <img src='/static/dance.gif'> ", " <img src='/static/macemoji.png'> ", " <img src='/static/jonnose.png'> ", " <img src='/static/chiyo.png'> ");
     $input = str_replace($find, $replace, $input);
     return $input;
 }
