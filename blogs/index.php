@@ -135,7 +135,11 @@
                                             <?php $dislikes = (int)getDislikesFromBlog($row['id'], $conn); ?>
                                             <?php
                                                 $total = $likes + $dislikes;
-                                                $percent = round(($likes / $total) * 100);
+                                                if($total > 0)
+                                                    $percent = round(($likes / $total) * 100);
+                                                else 
+                                                $percent = 100;
+                                            ?>
                                             ?>
                                             <div id="rating_score" class="rating" style="display: inline-block;">Rating:<strong><?php echo $percent; ?>%</strong></div>
                                             <div id="rate_btns" style="display: inline-block;">
