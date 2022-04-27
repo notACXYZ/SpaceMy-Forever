@@ -54,14 +54,26 @@
             <?php require($_SERVER['DOCUMENT_ROOT'] . "/static/header.php"); ?>
             <br>
             <div class="padding">
-                <h1 id="noMargin">About</h1>
-                Made with ❤️ by <b><a href="/profile.php?id=1">chief bazinga</a></b><br>
-                Made with MySQL, php7.3, and Composer.<br><br>
+                <h1 id="noMargin">About</h1><br>
+				<h3 id="noMargin">Original </h3>
+                <ul>
+                    <li><a href="https://github.com/the-real-sumsome">chief bazinga</a></li>
+                    <li><a href="https://github.com/typicalname0">typicalname0</a></li>
+                    <li><a href="https://github.com/ezist">ezist</a></li>
+                </ul><br>
+				
+				<h3 id="noMargin">Rehost <small>(SpaceMy Forever)</small></h3>
+                <ul>
+                    <li><a href="https://github.com/notACXYZ/">ACXYZ <small>(aka bobman99)</small></a></li>
+                </ul>
+
+                Made with MySQL, PHP 7.3 and Composer.<br><br>
                 <b>Composer Packages</b><br>
                 <ul>
                     <li><a href="https://github.com/SmItH197/SteamAuthentication">Steam PHP OAuth</a></li>
                     <li><a href="https://github.com/erusev/parsedown">Parsedown</a></li>
                     <li><a href="https://github.com/matthiasmullie/minify">Minify</a></li>
+					<li><a href="https://github.com/snipe/banbuilder">BanBuilder</a></li>
                 </ul>
             </div>
         </div>
