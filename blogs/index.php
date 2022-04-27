@@ -140,7 +140,6 @@
                                                 else 
                                                 $percent = 100;
                                             ?>
-                                            ?>
                                             <div id="rating_score" class="rating" style="display: inline-block;">Rating:<strong><?php echo $percent; ?>%</strong></div>
                                             <div id="rate_btns" style="display: inline-block;">
                                                 <div id="rate_yes"><a href="like.php?id=<?php echo $row['id']; ?>">Booyah !</a></div>
