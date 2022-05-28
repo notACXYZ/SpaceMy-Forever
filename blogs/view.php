@@ -15,7 +15,7 @@
         <script src="/onLogin.js"></script>
         <meta property="og:title" content="<?php echo $blog['subject'] . " by " . $blog['author']; ?>" />
         <meta property="og:description" content="<?php echo preg_replace("/\"/", "&quot;", $blog['message']); ?>" />
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.bootstrapcdn.com *.jsdelivr.net *.youtube.com *.google.com *.gstatic.com; img-src 'self' images.weserv.nl; style-src 'self' *.bootstrapcdn.com 'unsafe-inline';">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.bootstrapcdn.com *.jsdelivr.net *.youtube.com *.google.com *.gstatic.com; img-src 'self' images.weserv.nl *.acxyz.ca; style-src 'self' *.bootstrapcdn.com 'unsafe-inline';">
         <style>
             .customtopLeft {
                 float: left;

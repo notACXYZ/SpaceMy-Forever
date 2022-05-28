@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="/lib/getCSS.php?id=<?php echo (int)$_GET['id']; ?>"> 
         <script src='https://www.google.com/recaptcha/api.js' async defer></script>
         <script src="/onLogin.js"></script>
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.bootstrapcdn.com *.jsdelivr.net *.youtube.com *.google.com *.gstatic.com; img-src 'self' images.weserv.nl; style-src 'self' *.bootstrapcdn.com 'unsafe-inline';">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.bootstrapcdn.com *.jsdelivr.net *.youtube.com *.google.com *.gstatic.com; img-src 'self' images.weserv.nl *.acxyz.ca; style-src 'self' *.bootstrapcdn.com 'unsafe-inline';">
         <?php $user = getUserFromId((int)$_GET['id'], $conn); ?>
         <meta property="og:title" content="<?php echo $user['username']; ?>" />
         <meta property="og:description" content="<?php echo preg_replace("/\"/", "&quot;", $user['bio']); ?>" />
