@@ -120,7 +120,7 @@
                         if($ownsGroup == true) {
                     ?>
                         <div class="splashBlue">
-                            <a href="https://www.spacemy.xyz/groups/join.php?id=109">Copy this to invite your friends to your group.</a>
+                            <a href="https://spacemy.acxyz.ca/groups/join.php?id=<?php echo $_GET['id']?>">Copy this to invite your friends to your group.</a>
                         </div><br>
                     <?php } ?>
                     <div class="comment">
